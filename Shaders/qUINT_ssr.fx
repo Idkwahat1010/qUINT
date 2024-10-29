@@ -44,7 +44,7 @@ uniform float SSR_FRESNEL_EXP <
 	ui_type = "drag";
 	ui_min = 1.00; ui_max = 10.00;
 	ui_label = "Reflection Exponent";
-	ui_tooltip = "qUINT uses Schlick's fresnel approximation.\nThis parameter represents the power of the angle falloff.\nHigher values restrict reflections to very flat angles.\nOriginal Schlick value: 5.\nThe Fresnel Coefficient is set to 0 to match most surfaces.";
+	ui_tooltip = "qUINT uses Schlick's fresnel approximation.\nThis parameter represents the power of the angle falloff.\nHigher values restrict reflections to very flat angles.\nOriginal Schlick value: 5.\nThe Fresnel Coefficient is set to 1 to match most surfaces.";
 	ui_category = "Global";
 > = 5.0;
 
