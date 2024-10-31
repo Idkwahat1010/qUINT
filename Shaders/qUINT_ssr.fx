@@ -33,16 +33,14 @@ uniform float SSR_FIELD_OF_VIEW <
 > = 50.0;
 
 uniform float SSR_REFLECTION_INTENSITY <
-	ui_type = "drag";
-	ui_min = 0.00; ui_max = 1.00;
+	ui_type = "combo";
 	ui_label = "Reflection Intensity";
 	ui_tooltip = "Amount of reflection.";
 	ui_category = "Global";
 > = 1.0;
 
 uniform float SSR_FRESNEL_EXP <
-	ui_type = "drag";
-	ui_min = 1.00; ui_max = 10.00;
+	ui_type = "combo";
 	ui_label = "Reflection Exponent";
 	ui_tooltip = "qUINT uses Schlick's fresnel approximation.\nThis parameter represents the power of the angle falloff.\nHigher values restrict reflections to very flat angles.\nOriginal Schlick value: 5.\nThe Fresnel Coefficient is set to 0 to match most surfaces.";
 	ui_category = "Global";
@@ -57,8 +55,7 @@ uniform float SSR_FADE_DIST <
 > = 0.8;
 
 uniform float SSR_RAY_INC <
-	ui_type = "drag";
-	ui_min = 1.01; ui_max = 3.00;
+	ui_type = "combo";
 	ui_label = "Ray Increment";
 	ui_tooltip = "Rate of ray step size growth.\nA parameter of 1.0 means same sized steps,\n2.0 means the step size doubles each iteration.\nIncrease if not the entire scene is represented (e.g. sky missing) at the cost of precision.";
 	ui_category = "Ray Tracing";
@@ -208,8 +205,8 @@ float3 get_normal_from_color(float2 uv, float2 offset, float scale, float sharpn
 float3 blend_normals(float3 n1, float3 n2)
 {
     //return normalize(float3(n1.xy*n2.z + n2.xy*n1.z, n1.z*n2.z));
-    n1 += float3( 0, 0, 1);
-    n2 *= float3(-1, -1, 1);
+    n1 += float3( 0, -0.001, 1);
+    n2 *= float3(0, -1, -1);
     return n1*dot(n1, n2)/n1.z - n2;
 }
 
